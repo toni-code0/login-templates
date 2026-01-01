@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Login & Sign Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  height:100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.container{
+  width:800px;
+  height:450px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
+  display:flex;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* FORMS */
+.form{
+  width:50%;
+  padding:60px;
+  transition:0.6s ease;
+  color:white;
+  position:absolute;
+  top:0;
+  height:100%;
+}
+
+.login{
+  left:0;
+}
+
+.signup{
+  left:0;
+  opacity:0;
+  pointer-events:none;
+}
+
+h2{
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+  outline:none;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:white;
+  color:#764ba2;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+.switch{
+  margin-top:20px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+/* WELCOME SIDE */
+.overlay{
+  position:absolute;
+  right:0;
+  width:50%;
+  height:100%;
+  background: linear-gradient(135deg,#ffffff33,#ffffff11);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px;
+  transition:0.6s ease;
+}
+
+.overlay h1{
+  color:white;
+  font-size:32px;
+}
+
+/* ACTIVE (SIGN UP) */
+.container.active .login{
+  transform:translateX(100%);
+  opacity:0;
+  pointer-events:none;
+}
+
+.container.active .signup{
+  transform:translateX(100%);
+  opacity:1;
+  pointer-events:auto;
+}
+
+.container.active .overlay{
+  transform:translateX(-100%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container">
+
+  <!-- LOGIN -->
+  <div class="form login">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+    <div class="switch" onclick="toggle()">Don't have an account? Sign Up</div>
+  </div>
+
+  <!-- SIGN UP -->
+  <div class="form signup">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Username">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Sign Up</button>
+    <div class="switch" onclick="toggle()">Already have an account? Login</div>
+  </div>
+
+  <!-- WELCOME -->
+  <div class="overlay">
+    <h1 id="welcomeText">Welcome Back 👋</h1>
+  </div>
+
+</div>
+
+<script>
+function toggle(){
+  const container = document.getElementById("container");
+  const text = document.getElementById("welcomeText");
+
+  container.classList.toggle("active");
+
+  if(container.classList.contains("active")){
+    text.innerText = "Welcome 🎉";
+  } else {
+    text.innerText = "Welcome Back 👋";
+  }
+}
+</script>
+
+</body>
+</html>
