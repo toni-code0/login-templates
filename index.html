@@ -121,7 +121,7 @@ button{
 .container.active .overlay{
   transform:translateX(-100%);
 }
-  /* 📱 MOBILE VERSION */
+/* 📱 MOBILE WITH ANIMATION */
 @media (max-width: 768px) {
 
   body{
@@ -133,33 +133,6 @@ button{
     height:100%;
     flex-direction:column;
     border-radius:16px;
-  }
-
-  /* FORMS */
-  .form{
-    width:100%;
-    height:auto;
-    position:relative;
-    padding:40px 25px;
-    transform:none !important;
-  }
-
-  .login,
-  .signup{
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  .signup{
-    display:none;
-  }
-
-  .container.active .login{
-    display:none;
-  }
-
-  .container.active .signup{
-    display:block;
   }
 
   /* WELCOME */
@@ -175,14 +148,50 @@ button{
     font-size:24px;
   }
 
-  input{
-    font-size:16px;
+  /* FORMS */
+  .form{
+    width:100%;
+    height:auto;
+    position:absolute;
+    left:0;
+    top:120px;
+    padding:40px 25px;
+    transition:0.5s ease;
   }
 
+  /* LOGIN DEFAULT */
+  .login{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+
+  /* SIGN UP HIDDEN */
+  .signup{
+    opacity:0;
+    transform:translateY(40px);
+    pointer-events:none;
+  }
+
+  /* ACTIVE (SIGN UP) */
+  .container.active .login{
+    opacity:0;
+    transform:translateY(-40px);
+    pointer-events:none;
+  }
+
+  .container.active .signup{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+
+  input,
   button{
     font-size:16px;
   }
 }
+
 </style>
 </head>
 
